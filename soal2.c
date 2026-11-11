@@ -42,11 +42,15 @@ int main(){
     initQueue(&q);
     int listBunga[MAX];
 
-    printf("Input data Tinggi: \n");
-    scanf("%d", listBunga);
-    int length = sizeof(listBunga);
+    printf("Input data Bunga: \n");
+    while(scanf("%d", listBunga)==1){
+        if(scanf("%d", listBunga)=="\n"){
+            break;
+        }
+    }
 
-    for(int i = 2; i<length-1; i++){
+    int length = sizeof(listBunga);
+    for(int i = 2; i<length - 1; i++){
         if(listBunga[i]<listBunga[i-1] && listBunga[i]<listBunga[i+1]){
             enqueue(&q, listBunga[i]);
         }
