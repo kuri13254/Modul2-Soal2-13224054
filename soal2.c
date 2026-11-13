@@ -29,7 +29,10 @@ void bungaTertutup(Queue *q){
     }
 
     for (int i = q->front; i < q->rear; i++) {
-        printf("%d ", q->listTertutup[i]);
+        if (i > q->front) {
+            printf(" ");
+        }
+        printf("%d", q->listTertutup[i]);
     }
     printf("\n");
 }
@@ -39,13 +42,9 @@ int main(){
     initQueue(&q);
     int listBunga[MAX];
     int n = 0;
-    char c;
 
-    while (scanf("%d%c", &listBunga[n], &c) == 2) {
+    while (scanf("%d", &listBunga[n]) == 1) {
         n++;
-        if (c == '\n') {
-            break;
-        }
     }
 
     for(int i = 1; i < n - 1; i++){
