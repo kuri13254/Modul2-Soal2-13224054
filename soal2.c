@@ -18,8 +18,8 @@ bool isEmpty(Queue *q) {
     return (q->front == q->rear);
 }
 
-void enqueue(Queue *q, int Tinggi) {
-    q->listTertutup[q->rear++] = Tinggi;
+void enqueue(Queue *q, int index) {
+    q->listTertutup[q->rear++] = index;
 }
 
 void bungaTertutup(Queue *q){
@@ -50,7 +50,7 @@ int main(){
 
     for(int i = 1; i < n - 1; i++){
         if(listBunga[i] < listBunga[i-1] && listBunga[i] < listBunga[i+1]){
-            enqueue(&q, listBunga[i]);
+            enqueue(&q, i + 1);
         }
     }
     
