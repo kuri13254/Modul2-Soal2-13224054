@@ -20,19 +20,16 @@ bool isEmpty(Queue *q) {
 
 void enqueue(Queue *q, int Tinggi) {
     q->listTertutup[q->rear++] = Tinggi;
-    q->rear++;
 }
 
 void bungaTertutup(Queue *q){
-    if (isEmpty(q))
-    {
+    if (isEmpty(q)) {
         printf("NONE\n");
         return;
     }
 
-    for (int i = q->front; i < q->rear; i++)
-    {
-        printf("%d", q->listTertutup[i]);
+    for (int i = q->front; i < q->rear; i++) {
+        printf("%d ", q->listTertutup[i]);
     }
     printf("\n");
 }
@@ -41,20 +38,22 @@ int main(){
     Queue q;
     initQueue(&q);
     int listBunga[MAX];
+    int n = 0;
+    char c;
 
-    printf("Input data Bunga: \n");
-    while(scanf("%d", listBunga)==1){
-        if(scanf("%d", listBunga)=="\n"){
+    while (scanf("%d%c", &listBunga[n], &c) == 2) {
+        n++;
+        if (c == '\n') {
             break;
         }
     }
 
-    int length = sizeof(listBunga);
-    for(int i = 2; i<length - 1; i++){
-        if(listBunga[i]<listBunga[i-1] && listBunga[i]<listBunga[i+1]){
+    for(int i = 1; i < n - 1; i++){
+        if(listBunga[i] < listBunga[i-1] && listBunga[i] < listBunga[i+1]){
             enqueue(&q, listBunga[i]);
         }
     }
+    
     bungaTertutup(&q);
 
     return 0;
